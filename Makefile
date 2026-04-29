@@ -1,14 +1,18 @@
 MODULE_NAME ?= driver
-
+CFLAGS = -Iinclude
+CC = gcc
+SRC = src/user_program.c src/user_functions.c
+OBJ = src/user_program.o src/user_functions.o
 obj-m += $(MODULE_NAME).o
 
 $(MODULE_NAME)-objs := src/driver.o
 KDIR := /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
 
-all:
+device:
 	$(MAKE) -C $(KDIR) M=$(PWD) modules
-	gcc src/user_program.c src/user_functions.c -o user_program
+user:$(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o user_program
 
 clean:
 	$(MAKE) -C $(KDIR) M=$(PWD) clean
