@@ -1,14 +1,13 @@
-=============================================================================
-             PROJECT: SIMPLE CHARACTER DEVICE DRIVER
-=============================================================================
 
+             PROJECT: SIMPLE CHARACTER DEVICE DRIVER
+             
 1. DESCRIPTION
 -----------------------------------------------------------------------------
 This project implements a Linux Kernel Module (Character Device) and a 
 User-Space utility. It allows data to be transferred between a file on disk, 
 the kernel memory buffer, and the terminal.
-
 The project is split into three main components:
+
 - driver.c: Kernel-level functionality (open, read, write, release).
 - user_program.c: Main entry point for the terminal interface.
 - user_functions.c: Helper functions for help and device communication.
@@ -17,10 +16,12 @@ The project is split into three main components:
 -----------------------------------------------------------------------------
 The project uses a custom Makefile with specific targets:
 
+
 - To build the driver (Kernel Module):
   $ make device MODULE_NAME=<your_module_name>
 
 - To build the user space program:
+- 
   $ make user
 
 - To remove all compiled files:
@@ -60,4 +61,4 @@ $ ./user_program /dev/my_device data.txt 15
     * dev_open/release: Returns 0.
     * User program: Returns 0 on success, non-zero on error.
 
-=============================================================================
+-----------------------------------------------------------------------------
